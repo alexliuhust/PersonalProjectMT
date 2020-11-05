@@ -50,7 +50,7 @@ public class ProjectController {
     public ResponseEntity<?> deleteProjectById(@PathVariable String projectId) {
         projectService.deleteProjectByIdentifier(projectId);
         return new ResponseEntity<String>(
-                "Successfully deleted Project with ID: '" + projectId.toUpperCase() + "'.", HttpStatus.OK);
+                "Successfully Deleted A Project With ID: '" + projectId.toUpperCase() + "'.", HttpStatus.OK);
     }
 
 
