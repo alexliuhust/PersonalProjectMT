@@ -60,6 +60,8 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
+        <!-- It's important to get those TWO dependencies below to get a full validation functionality -->
         <dependency>
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
