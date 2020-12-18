@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getProject } from "../../actions/projectActions";
+import { getProject, createProject } from "../../actions/projectActions";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import classnames from "classnames";
@@ -72,7 +72,7 @@ class UpdateProject extends Component {
             <div className="col-md-8 m-auto">
               <h5 className="display-4 text-center">Edit Project form</h5>
               <hr />
-              <form>
+              <form onSubmit={this.onSubmit}>
                 <div className="form-group">
                   <input
                     type="text"
@@ -80,6 +80,7 @@ class UpdateProject extends Component {
                     placeholder="Project Name"
                     name="projectName"
                     value={this.state.projectName}
+                    onChange={this.onChange}
                   />
                 </div>
                 <div className="form-group">
@@ -98,6 +99,7 @@ class UpdateProject extends Component {
                     placeholder="Project Description"
                     name="description"
                     value={this.state.description}
+                    onChange={this.onChange}
                   ></textarea>
                 </div>
                 <h6>Start Date</h6>
@@ -107,6 +109,7 @@ class UpdateProject extends Component {
                     className="form-control form-control-lg"
                     name="start_date"
                     value={this.state.start_date}
+                    onChange={this.onChange}
                   />
                 </div>
                 <h6>Estimated End Date</h6>
@@ -116,6 +119,7 @@ class UpdateProject extends Component {
                     className="form-control form-control-lg"
                     name="end_date"
                     value={this.state.end_date}
+                    onChange={this.onChange}
                   />
                 </div>
 
@@ -134,6 +138,7 @@ class UpdateProject extends Component {
 
 UpdateProject.propTypes = {
   getProject: PropTypes.func.isRequired,
+  createProject: PropTypes.func.isRequired,
   project: PropTypes.object.isRequired,
 };
 
@@ -141,4 +146,6 @@ const mapStateToProps = (state) => ({
   project: state.project.project,
 });
 
-export default connect(mapStateToProps, { getProject })(UpdateProject);
+export default connect(mapStateToProps, { getProject, createProject })(
+  UpdateProject
+);
