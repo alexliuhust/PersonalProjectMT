@@ -13,7 +13,7 @@ public class Project {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @NotBlank(message = "Project name is required")
     private String projectName;
     @NotBlank(message = "Project identifier is required")
@@ -33,14 +33,18 @@ public class Project {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date updated_At;
 
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "project")
+    //
+    private Backlog backlog;
+
     public Project() {
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -98,6 +102,14 @@ public class Project {
 
     public void setUpdated_At(Date updated_At) {
         this.updated_At = updated_At;
+    }
+
+    public Backlog getBacklog() {
+        return backlog;
+    }
+
+    public void setBacklog(Backlog backlog) {
+        this.backlog = backlog;
     }
 
     @PrePersist
