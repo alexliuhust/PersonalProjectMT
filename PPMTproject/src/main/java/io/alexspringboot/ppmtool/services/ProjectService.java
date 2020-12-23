@@ -29,12 +29,15 @@ public class ProjectService {
                 backlog.setProject(project);
                 backlog.setProjectIdentifier(identifier);
             }
+
             // When we are UPDATING a project, this project must have an id already
             if (project.getId() != null) {
                 project.setBacklog(backlogRepository.findBacklogByProjectIdentifier(identifier));
             }
 
+            // Let the database to store this valid project
             return projectRepository.save(project);
+
         } catch (Exception e) {
             throw new ProjectIdException(
                     "Project ID '" + project.getProjectIdentifier().toUpperCase() + "' already exists");

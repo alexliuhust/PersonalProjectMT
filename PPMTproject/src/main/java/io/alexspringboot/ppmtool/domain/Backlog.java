@@ -15,7 +15,7 @@ public class Backlog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
     private Integer PTSequence = 0;
     private String projectIdentifier;
 
@@ -41,11 +41,11 @@ public class Backlog {
     }
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        id = id;
     }
 
     public Integer getPTSequence() {
