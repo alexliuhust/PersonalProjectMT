@@ -42,4 +42,8 @@ public class ProjectTaskService {
 
         return projectTaskRepsitory.save(projectTask);
     }
+
+    public Iterable<ProjectTask> findBacklogById(String backlog_id) {
+        return projectTaskRepsitory.findByProjectIdentifierOrderByPriority(backlog_id);
+    }
 }
