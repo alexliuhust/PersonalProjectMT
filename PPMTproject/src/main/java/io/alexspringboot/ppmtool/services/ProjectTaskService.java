@@ -2,6 +2,7 @@ package io.alexspringboot.ppmtool.services;
 
 import io.alexspringboot.ppmtool.domain.Backlog;
 import io.alexspringboot.ppmtool.domain.ProjectTask;
+import io.alexspringboot.ppmtool.exceptions.ProjectIdException;
 import io.alexspringboot.ppmtool.repository.BacklogRepository;
 import io.alexspringboot.ppmtool.repository.ProjectTaskRepsitory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +18,14 @@ public class ProjectTaskService {
     private ProjectTaskRepsitory projectTaskRepsitory;
 
     public ProjectTask addProjectTask(String projectIdentifier, ProjectTask projectTask) {
+        Backlog backlog = backlogRepository.findBacklogByProjectIdentifier(projectIdentifier);
         // Exception: Project Not Found
+        if (backlog == null) {
+            throw new ProjectIdException(
+                    "Project ID '" + projectIdentifier.toUpperCase() + "' does NOT exist");
+        }
 
         // ProjectTsk to be added to a specific project, where this project != null
-        Backlog backlog = backlogRepository.findBacklogByProjectIdentifier(projectIdentifier);
         // Set the backlog to projectTask
         projectTask.setBacklog(backlog);
         // We want out project sequence to look like this: A0023-1, A0023-2, ...(100), A0023-101,

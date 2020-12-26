@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+/**
+ * CustomResponseEntityExceptionHandler:
+ * It posts the exception to the front-end as a ResponseEntity
+ */
 @ControllerAdvice
 @RestController
 public class CustomResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
