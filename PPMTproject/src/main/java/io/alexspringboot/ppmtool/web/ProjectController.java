@@ -1,20 +1,15 @@
 package io.alexspringboot.ppmtool.web;
 
 import io.alexspringboot.ppmtool.domain.Project;
-import io.alexspringboot.ppmtool.repository.ProjectRepository;
 import io.alexspringboot.ppmtool.services.MapValidationErrorService;
 import io.alexspringboot.ppmtool.services.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/project")
@@ -53,20 +48,5 @@ public class ProjectController {
         return new ResponseEntity<String>(
                 "Successfully Deleted A Project With ID: '" + projectId.toUpperCase() + "'.", HttpStatus.OK);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

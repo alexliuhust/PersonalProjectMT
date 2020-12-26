@@ -2,11 +2,13 @@ package io.alexspringboot.ppmtool.services;
 
 import io.alexspringboot.ppmtool.domain.Backlog;
 import io.alexspringboot.ppmtool.domain.ProjectTask;
-import io.alexspringboot.ppmtool.exceptions.ProjectIdException;
+import io.alexspringboot.ppmtool.exceptions.ProjectNotFound;
 import io.alexspringboot.ppmtool.repository.BacklogRepository;
 import io.alexspringboot.ppmtool.repository.ProjectTaskRepsitory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ProjectTaskService {
@@ -21,8 +23,8 @@ public class ProjectTaskService {
         Backlog backlog = backlogRepository.findBacklogByProjectIdentifier(projectIdentifier);
         // Exception: Project Not Found
         if (backlog == null) {
-            throw new ProjectIdException(
-                    "Project ID '" + projectIdentifier.toUpperCase() + "' does NOT exist");
+            throw new ProjectNotFound(
+                    "Project with ID '" + projectIdentifier.toUpperCase() + "' NOT found");
         }
 
         // ProjectTsk to be added to a specific project, where this project != null
@@ -49,6 +51,12 @@ public class ProjectTaskService {
     }
 
     public Iterable<ProjectTask> findBacklogById(String backlog_id) {
-        return projectTaskRepsitory.findByProjectIdentifierOrderByPriority(backlog_id);
+        List<ProjectTask> allTasks = projectTaskRepsitory.findByProjectIdentifierOrderByPriority(backlog_id);
+        if (allTasks.isEmpty()) {
+            throw new ProjectNotFound(
+                    "Project with ID '" + backlog_id.toUpperCase() + "' NOT found");
+        }
+        return allTasks;
+        //return projectTaskRepsitory.findByProjectIdentifierOrderByPriority(backlog_id);
     }
 }
