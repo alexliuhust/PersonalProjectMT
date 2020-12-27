@@ -27,7 +27,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         projectTasks: state.projectTasks.filter(
-          (projectTask) => projectTask.projectSequence != action.payload
+          (projectTask) => projectTask.projectSequence !== action.payload
         ),
       };
 
