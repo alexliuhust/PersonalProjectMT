@@ -101,11 +101,6 @@ public class ProjectTaskService {
         // Use findPTByProjectSequence to help us do the URL validation
         ProjectTask projectTask = findPTByProjectSequence(backlog_id,pt_id);
 
-        Backlog backlog = projectTask.getBacklog();
-        List<ProjectTask> list = backlog.getProjectTasks();
-        list.remove(projectTask);
-        backlogRepository.save(backlog);
-
         projectTaskRepository.delete(projectTask);
     }
 }
