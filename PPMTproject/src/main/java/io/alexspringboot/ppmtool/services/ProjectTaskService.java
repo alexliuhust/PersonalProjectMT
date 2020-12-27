@@ -61,6 +61,8 @@ public class ProjectTaskService {
     }
 
     public ProjectTask findPTByProjectSequence(String backlog_id, String pt_id) {
+
+        // ========================= URL Validation Starts =========================
         // Make sure the backlog exist;
         Backlog backlog = backlogRepository.findBacklogByProjectIdentifier(backlog_id);
         if (backlog == null) {
@@ -82,13 +84,28 @@ public class ProjectTaskService {
                     "NOT exist in the project '" + backlog_id.toUpperCase() + "'. " +
                     "What are you playing at?");
         }
+        // ========================== URL Validation Ends ==========================
 
         return projectTask;
     }
 
     public ProjectTask updateByProjectSequence(ProjectTask updatedTask, String backlog_id, String pt_id) {
-        ProjectTask projectTask = projectTaskRepository.findByProjectSequence(pt_id);
+        // Use findPTByProjectSequence to help us do the URL validation
+        ProjectTask projectTask = findPTByProjectSequence(backlog_id,pt_id);
+
         projectTask = updatedTask;
         return projectTaskRepository.save(updatedTask);
+    }
+
+    public void deleteByProjectSequence(String backlog_id, String pt_id) {
+        // Use findPTByProjectSequence to help us do the URL validation
+        ProjectTask projectTask = findPTByProjectSequence(backlog_id,pt_id);
+
+        Backlog backlog = projectTask.getBacklog();
+        List<ProjectTask> list = backlog.getProjectTasks();
+        list.remove(projectTask);
+        backlogRepository.save(backlog);
+
+        projectTaskRepository.delete(projectTask);
     }
 }

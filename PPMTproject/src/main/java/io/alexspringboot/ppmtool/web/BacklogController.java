@@ -55,7 +55,14 @@ public class BacklogController {
 
         ProjectTask updateTask = projectTaskService.updateByProjectSequence(projectTask, backlog_id, pt_id);
         return new ResponseEntity<ProjectTask>(updateTask, HttpStatus.OK);
+    }
 
+    @DeleteMapping("/{backlog_id}/{pt_id}")
+    public ResponseEntity<?> deleteProjectTask(@PathVariable String backlog_id,
+                                               @PathVariable String pt_id) {
+        projectTaskService.deleteByProjectSequence(backlog_id, pt_id);
+        return new ResponseEntity<String>(
+                "Successfully Deleted A ProjectTask With ID: '" + pt_id.toUpperCase() + "'.", HttpStatus.OK);
     }
 
 }
