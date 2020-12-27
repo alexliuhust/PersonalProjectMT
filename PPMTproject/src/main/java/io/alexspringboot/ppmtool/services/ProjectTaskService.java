@@ -78,11 +78,17 @@ public class ProjectTaskService {
         // Make sure the backlog, project, and projectTask match each other;
         if (!projectTask.getProjectIdentifier().equals(backlog_id)) {
             throw new ProjectNotFound(
-                    "Project Task with ID '" + pt_id.toUpperCase() +
-                    "' NOT exist in the project '" + backlog_id.toUpperCase() + "'. " +
+                    "Project Task with ID '" + pt_id.toUpperCase() + "' " +
+                    "NOT exist in the project '" + backlog_id.toUpperCase() + "'. " +
                     "What are you playing at?");
         }
 
         return projectTask;
+    }
+
+    public ProjectTask updateByProjectSequence(ProjectTask updatedTask, String backlog_id, String pt_id) {
+        ProjectTask projectTask = projectTaskRepository.findByProjectSequence(pt_id);
+        projectTask = updatedTask;
+        return projectTaskRepository.save(updatedTask);
     }
 }
