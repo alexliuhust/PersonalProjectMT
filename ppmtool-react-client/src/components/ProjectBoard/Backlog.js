@@ -8,6 +8,30 @@ class Backlog extends Component {
       <ProjectTask key={projectTask.id} projectTask={projectTask} />
     ));
 
+    // Organize Project Tasks by status
+    let todoTasks = [],
+      inprogressTasks = [],
+      doneTasks = [];
+    for (let i = 0; i < tasks.length; i++) {
+      if (tasks[i].props.projectTask.status === "TO_DO") {
+        todoTasks.push(tasks[i]);
+      } else if (tasks[i].props.projectTask.status === "IN_PROGRESS") {
+        inprogressTasks.push(tasks[i]);
+      } else {
+        doneTasks.push(tasks[i]);
+      }
+    }
+
+    // Sort Project Tasks by priority
+    function compare(task1, task2) {
+      if (task1.priority > task2.priority) return 1;
+      if (task1.priority === task2.priority) return 0;
+      return -1;
+    }
+    todoTasks.sort(compare);
+    inprogressTasks.sort(compare);
+    doneTasks.sort(compare);
+
     return (
       <div className="container">
         <div className="row">
@@ -17,7 +41,7 @@ class Backlog extends Component {
                 <h3>TO DO</h3>
               </div>
             </div>
-            {tasks}
+            {todoTasks}
           </div>
 
           <div className="col-md-4">
@@ -26,9 +50,7 @@ class Backlog extends Component {
                 <h3>In Progress</h3>
               </div>
             </div>
-            {
-              // Sample project
-            }
+            {inprogressTasks}
           </div>
           <div className="col-md-4">
             <div className="card text-center mb-2">
@@ -36,9 +58,7 @@ class Backlog extends Component {
                 <h3>Done</h3>
               </div>
             </div>
-            {
-              // Sample project
-            }
+            {doneTasks}
           </div>
         </div>
       </div>
