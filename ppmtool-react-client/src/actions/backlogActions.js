@@ -1,9 +1,25 @@
 import axios from "axios";
-import { GET_BACKLOG, GET_PROJECT_TASK, DELETE_PROJECT_TASK } from "./types";
+import {
+  GET_BACKLOG,
+  GET_PROJECT_TASK,
+  DELETE_PROJECT_TASK,
+  GET_ERRORS,
+} from "./types";
 
-export const addProjectTask = (backlog_id, projectTask, history) => async (
+export const addProjectTask = (backlog_id, project_task, history) => async (
   dispatch
 ) => {
-  await axios.post(`/api/backlog/${backlog_id}`, projectTask);
-  history.push(`/projectBoard/${backlog_id}`);
+  try {
+    await axios.post(`/api/backlog/${backlog_id}`, project_task);
+    history.push(`/projectBoard/${backlog_id}`);
+    dispatch({
+      type: GET_ERRORS,
+      payload: {},
+    });
+  } catch (err) {
+    dispatch({
+      type: GET_ERRORS,
+      payload: err.response.data,
+    });
+  }
 };

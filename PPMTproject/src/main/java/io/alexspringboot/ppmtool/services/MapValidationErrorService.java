@@ -17,6 +17,8 @@ public class MapValidationErrorService {
         if (result.hasErrors()) {
             Map<String, String> errorMap = new HashMap<>();
             for (FieldError error : result.getFieldErrors()) {
+                System.out.println(error.getField());
+                System.out.println(error.getDefaultMessage());
                 errorMap.put(error.getField(), error.getDefaultMessage());
             }
 

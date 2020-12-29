@@ -24,14 +24,17 @@ public class BacklogController {
 
     @PostMapping("/{backlog_id}")
     public ResponseEntity<?> addPTtoBacklog(@Valid @RequestBody ProjectTask projectTask,
-                                            @PathVariable String backlog_id,
-                                            BindingResult result) {
+                                            BindingResult result, @PathVariable String backlog_id){
+        //show delete
+        //custom exception
 
         ResponseEntity<?> errorMap = mapValidationErrorService.mapValidationService(result);
         if (errorMap != null) return errorMap;
 
         ProjectTask projectTask1 = projectTaskService.addProjectTask(backlog_id, projectTask);
+
         return new ResponseEntity<ProjectTask>(projectTask1, HttpStatus.CREATED);
+
     }
 
     @GetMapping("/{backlog_id}")
