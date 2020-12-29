@@ -21,7 +21,7 @@ class ProjectBoard extends Component {
         <br />
         <hr />
 
-        <Backlog></Backlog>
+        <Backlog projectTasks_prop={projectTasks}></Backlog>
       </div>
     );
   }
