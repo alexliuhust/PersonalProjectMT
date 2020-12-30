@@ -1,14 +1,14 @@
 package io.alexspringboot.ppmtool.services;
 
 import io.alexspringboot.ppmtool.domain.Backlog;
+import io.alexspringboot.ppmtool.domain.Project;
 import io.alexspringboot.ppmtool.domain.ProjectTask;
 import io.alexspringboot.ppmtool.exceptions.ProjectNotFound;
 import io.alexspringboot.ppmtool.repository.BacklogRepository;
+import io.alexspringboot.ppmtool.repository.ProjectRepository;
 import io.alexspringboot.ppmtool.repository.ProjectTaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class ProjectTaskService {
@@ -18,6 +18,9 @@ public class ProjectTaskService {
 
     @Autowired
     private ProjectTaskRepository projectTaskRepository;
+
+    @Autowired
+    private ProjectRepository projectRepository;
 
     public ProjectTask addProjectTask(String projectIdentifier, ProjectTask projectTask) {
         Backlog backlog = backlogRepository.findBacklogByProjectIdentifier(projectIdentifier);
@@ -51,34 +54,34 @@ public class ProjectTaskService {
     }
 
     public Iterable<ProjectTask> findBacklogById(String backlog_id) {
-        List<ProjectTask> allTasks = projectTaskRepository.findByProjectIdentifierOrderByPriority(backlog_id);
-        if (allTasks.isEmpty()) {
+        Project project = projectRepository.findProjectByProjectIdentifier(backlog_id);
+
+        if(project==null){
             throw new ProjectNotFound(
                     "Project with ID '" + backlog_id.toUpperCase() + "' NOT found");
         }
-        return allTasks;
-        //return projectTaskRepsitory.findByProjectIdentifierOrderByPriority(backlog_id);
+        return projectTaskRepository.findByProjectIdentifierOrderByPriority(backlog_id);
     }
 
     public ProjectTask findPTByProjectSequence(String backlog_id, String pt_id) {
 
         // ========================= URL Validation Starts =========================
         // Make sure the backlog exist;
-        Backlog backlog = backlogRepository.findBacklogByProjectIdentifier(backlog_id);
+        Backlog backlog = backlogRepository.findBacklogByProjectIdentifier(backlog_id.toUpperCase());
         if (backlog == null) {
             throw new ProjectNotFound(
                     "Project with ID '" + backlog_id.toUpperCase() + "' NOT found");
         }
 
         // Make sure the projectTask exist;
-        ProjectTask projectTask = projectTaskRepository.findByProjectSequence(pt_id);
+        ProjectTask projectTask = projectTaskRepository.findByProjectSequence(pt_id.toUpperCase());
         if (projectTask == null) {
             throw new ProjectNotFound(
                     "Project Task with ID '" + pt_id.toUpperCase() + "' NOT found");
         }
 
         // Make sure the backlog, project, and projectTask match each other;
-        if (!projectTask.getProjectIdentifier().equals(backlog_id)) {
+        if (!projectTask.getProjectIdentifier().equals(backlog_id.toUpperCase())) {
             throw new ProjectNotFound(
                     "Project Task with ID '" + pt_id.toUpperCase() + "' " +
                     "NOT exist in the project '" + backlog_id.toUpperCase() + "'. " +
