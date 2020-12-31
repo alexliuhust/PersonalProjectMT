@@ -73,3 +73,13 @@ export const updateProjectTask = (
     });
   }
 };
+
+export const deleteProjectTask = (backlog_id, pt_id) => async (dispatch) => {
+  if (window.confirm("Are you sure?")) {
+    await axios.delete(`/api/backlog/${backlog_id}/${pt_id}`);
+    dispatch({
+      type: DELETE_PROJECT_TASK,
+      payload: pt_id,
+    });
+  }
+};
