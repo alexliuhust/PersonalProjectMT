@@ -23,14 +23,14 @@ class Backlog extends Component {
     }
 
     // Sort Project Tasks by priority
-    function compare(task1, task2) {
-      if (task1.priority > task2.priority) return 1;
-      if (task1.priority === task2.priority) return 0;
-      return -1;
-    }
-    todoTasks.sort(compare);
-    inprogressTasks.sort(compare);
-    doneTasks.sort(compare);
+    // function compare(task1, task2) {
+    //   if (task1.priority > task2.priority) return 1;
+    //   if (task1.priority === task2.priority) return 0;
+    //   return -1;
+    // }
+    // todoTasks.sort(compare);
+    // inprogressTasks.sort(compare);
+    // doneTasks.sort(compare);
 
     return (
       <div className="container">
