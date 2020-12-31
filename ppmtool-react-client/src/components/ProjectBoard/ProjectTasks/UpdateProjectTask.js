@@ -2,23 +2,30 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { addProjectTask } from "../../../actions/backlogActions";
+import { getProjectTask } from "../../../actions/backlogActions";
 import classnames from "classnames";
 
 class UpdateProjectTask extends Component {
-  render() {
-    const { id } = this.props.match.params;
+  componentDidMount() {
+    const { backlog_id, pt_id } = this.props.match.params;
+    this.props.getProjectTask(backlog_id, pt_id, this.props.history);
+  }
 
+  render() {
+    const { backlog_id, pt_id } = this.props.match.params;
     return (
       <div className="add-PBI">
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <Link to={`/projectBoard/${id}`} className="btn btn-primary">
+              <Link
+                to={`/projectBoard/${backlog_id}`}
+                className="btn btn-primary"
+              >
                 Back to Project Board
               </Link>
               <h4 className="display-4 text-center">Update Project Task</h4>
-              <p className="lead text-center">Project Name + Project Code</p>
+              <p className="lead text-center">Project Name + {pt_id}</p>
               <form onSubmit={this.onSubmit}>
                 <div className="form-group">
                   <input
@@ -96,4 +103,13 @@ class UpdateProjectTask extends Component {
   }
 }
 
-export default UpdateProjectTask;
+UpdateProjectTask.propTypes = {
+  projectTask: PropTypes.object.isRequired,
+  getProjectTask: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  projectTask: state.backlog.projectTask,
+});
+
+export default connect(mapStateToProps, { getProjectTask })(UpdateProjectTask);
