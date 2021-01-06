@@ -1,6 +1,7 @@
 package io.alexspringboot.ppmtool.services;
 
 import io.alexspringboot.ppmtool.domain.User;
+import io.alexspringboot.ppmtool.exceptions.UsernameDuplicate;
 import io.alexspringboot.ppmtool.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -16,16 +17,22 @@ public class UserService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public User saveUser(User newUser) {
-        newUser.setPassword(bCryptPasswordEncoder.encode(newUser.getPassword()));
+        try {
+            newUser.setPassword(bCryptPasswordEncoder.encode(newUser.getPassword()));
 
-        // Username has to be unique
+            // Username has to be unique
+            newUser.setUsername(newUser.getUsername());
+            // Password and confirmPassword must match
 
-        // Password and confirmPassword must match
-
-        // Do not persist or show the confirmPassword
+            // Do not persist or show the confirmPassword
 
 
-        return userRepository.save(newUser);
+            return userRepository.save(newUser);
+        } catch (Exception e) {
+            throw new UsernameDuplicate("Username " + newUser.getUsername() + " already exists!");
+        }
+
+
     }
 
 }
