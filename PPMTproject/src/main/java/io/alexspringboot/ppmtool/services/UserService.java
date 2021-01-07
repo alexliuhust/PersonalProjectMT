@@ -25,7 +25,7 @@ public class UserService {
             // Password and confirmPassword must match
 
             // Do not persist or show the confirmPassword
-
+            newUser.setConfirmPassword("");
 
             return userRepository.save(newUser);
         } catch (Exception e) {
