@@ -4,6 +4,7 @@ import io.alexspringboot.ppmtool.domain.Backlog;
 import io.alexspringboot.ppmtool.domain.Project;
 import io.alexspringboot.ppmtool.domain.User;
 import io.alexspringboot.ppmtool.exceptions.ProjectIdException;
+import io.alexspringboot.ppmtool.exceptions.ProjectNotFound;
 import io.alexspringboot.ppmtool.repository.BacklogRepository;
 import io.alexspringboot.ppmtool.repository.ProjectRepository;
 import io.alexspringboot.ppmtool.repository.UserRepository;
@@ -53,12 +54,19 @@ public class ProjectService {
         }
     }
 
-    public Project findProjectByIdentifier(String projectId) {
+    public Project findProjectByIdentifier(String projectId, String username) {
         Project project = projectRepository.findProjectByProjectIdentifier(projectId.toUpperCase());
         if (project == null) {
             throw new ProjectIdException(
                     "Project ID '" + projectId.toUpperCase() + "' does NOT exist");
         }
+
+        // Only the project owner can access this project
+        if (!project.getProjectLeader().equals(username)) {
+            throw new ProjectNotFound(
+                    "Your project with ID '" + projectId.toUpperCase() + "' does NOT exist");
+        }
+
         return project;
     }
 
@@ -66,13 +74,9 @@ public class ProjectService {
         return projectRepository.findAllByProjectLeader(username);
     }
 
-    public void deleteProjectByIdentifier(String projectId) {
-        Project project = projectRepository.findProjectByProjectIdentifier(projectId.toUpperCase());
-        if (project == null) {
-            throw new ProjectIdException(
-                    "Project ID '" + projectId.toUpperCase() + "' does NOT exist.\nCannot delete it.");
-        }
-        projectRepository.delete(project);
+    public void deleteProjectByIdentifier(String projectId, String username) {
+
+        projectRepository.delete(findProjectByIdentifier(projectId, username));
     }
 }
 
