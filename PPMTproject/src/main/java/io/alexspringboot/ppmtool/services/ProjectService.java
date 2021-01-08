@@ -24,6 +24,23 @@ public class ProjectService {
     private UserRepository userRepository;
 
     public Project saveOrUpdateProject(Project project, String username) {
+
+        // Make sure only the owner can update the project
+        if (project.getId() != null) { // It's UPDATING project
+            Project existingProject = projectRepository
+                    .findProjectByProjectIdentifier(project.getProjectIdentifier());
+
+            if (existingProject == null) {
+                throw new ProjectIdException(
+                  "Project ID '" + project.getProjectIdentifier().toUpperCase() + "' does NOT exist");
+            }
+            // If it tries to update other one's project
+            else if (!existingProject.getProjectLeader().equals(username)) {
+                throw new ProjectNotFound(
+                   "Your project with ID '" + project.getProjectIdentifier().toUpperCase() + "' does NOT exist");
+            }
+        }
+
         try {
 
             User user = userRepository.findByUsername(username);
