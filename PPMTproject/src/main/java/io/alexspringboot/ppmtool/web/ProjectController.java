@@ -42,8 +42,8 @@ public class ProjectController {
     }
 
     @GetMapping("/all")
-    public Iterable<Project> findAllProjects() {
-        return projectService.findAllProjects();
+    public Iterable<Project> findAllProjects(Principal principal) {
+        return projectService.findAllProjects(principal.getName());
     }
 
     @DeleteMapping("/{projectId}")
