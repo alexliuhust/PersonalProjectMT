@@ -2,7 +2,6 @@ package io.alexspringboot.ppmtool.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sun.javafx.beans.IDProperty;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -39,6 +38,28 @@ public class Project {
     private Backlog backlog;
     // After we use @JsonIgnore, when we fetch only the project, it will only load the project itself,
     // not the whole backlog together with all the associated projectTasks
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public String getProjectLeader() {
+        return projectLeader;
+    }
+
+    public void setProjectLeader(String projectLeader) {
+        this.projectLeader = projectLeader;
+    }
+
+    private String projectLeader;
 
     public Project() {
     }

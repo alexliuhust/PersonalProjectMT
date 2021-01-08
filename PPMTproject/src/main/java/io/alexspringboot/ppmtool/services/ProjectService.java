@@ -2,9 +2,11 @@ package io.alexspringboot.ppmtool.services;
 
 import io.alexspringboot.ppmtool.domain.Backlog;
 import io.alexspringboot.ppmtool.domain.Project;
+import io.alexspringboot.ppmtool.domain.User;
 import io.alexspringboot.ppmtool.exceptions.ProjectIdException;
 import io.alexspringboot.ppmtool.repository.BacklogRepository;
 import io.alexspringboot.ppmtool.repository.ProjectRepository;
+import io.alexspringboot.ppmtool.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,11 +19,18 @@ public class ProjectService {
     @Autowired
     private BacklogRepository backlogRepository;
 
-    public Project saveOrUpdateProject(Project project) {
-        try {
-            String identifier = project.getProjectIdentifier().toUpperCase();
+    @Autowired
+    private UserRepository userRepository;
 
+    public Project saveOrUpdateProject(Project project, String username) {
+        try {
+
+            User user = userRepository.findByUsername(username);
+            project.setUser(user);
+            project.setProjectLeader(user.getUsername());
+            String identifier = project.getProjectIdentifier().toUpperCase();
             project.setProjectIdentifier(identifier);
+
             // When we are CREATING a project, this project has no id, yet
             if (project.getId() == null) {
                 Backlog backlog = new Backlog();
