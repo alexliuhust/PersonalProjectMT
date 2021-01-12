@@ -1,5 +1,10 @@
 package io.alexspringboot.ppmtool.exceptions;
 
+/**
+ * It tells user the login operation fails.
+ * When the authentication fails after a user's login request,
+ * the AuthenticationEntryPoint will encapsulate the prompts into this class.
+ */
 public class InvalidLoginResponse {
 
     private String username;

@@ -10,7 +10,11 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 /**
  * CustomResponseEntityExceptionHandler:
- * It posts the exception to the front-end as a ResponseEntity
+ * It posts the exception to the front-end as a ResponseEntity.
+ *
+ * Note:
+ * Most of the errors handled by this class are from the server-end.
+ * Errors that led by illegal input from the front-end are handled by [services/MapValidationErrorService.java].
  */
 @ControllerAdvice
 @RestController

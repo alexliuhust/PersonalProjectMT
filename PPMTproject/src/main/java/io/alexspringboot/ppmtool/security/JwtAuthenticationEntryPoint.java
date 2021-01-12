@@ -14,6 +14,18 @@ import java.io.IOException;
 @Component
 public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
+    /**
+     * It is basically an "UnauthorizedHandler"
+     * When the authentication fails after a user's login request,
+     * it encapsulates the prompts into the object InvalidLoginResponse
+     * and post it back to the front-end
+     *
+     * @param httpServletRequest : the request when authentication fails
+     * @param httpServletResponse : the prompts
+     * @param e
+     * @throws IOException
+     * @throws ServletException
+     */
     @Override
     public void commence(HttpServletRequest httpServletRequest,
                          HttpServletResponse httpServletResponse,

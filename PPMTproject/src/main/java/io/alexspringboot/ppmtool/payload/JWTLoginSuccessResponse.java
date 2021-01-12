@@ -1,5 +1,11 @@
 package io.alexspringboot.ppmtool.payload;
 
+/**
+ * When user makes a successful login on the website,
+ * the server post a success mark and a string token back to the front-end.
+ * The login action in the front-end will extract the token from this object
+ * and decode it into a username and a password
+ */
 public class JWTLoginSuccessResponse {
 
     private boolean success;

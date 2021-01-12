@@ -43,7 +43,6 @@ public class UserController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest, BindingResult result) {
         ResponseEntity<?> errorMap = mapValidationErrorService.mapValidationService(result);
@@ -51,6 +50,17 @@ public class UserController {
             return errorMap;
         }
 
+        /*
+        UsernamePasswordAuthenticationToken: when a user is trying to log in,
+            the username and password are encapsulated into UsernamePasswordAuthenticationToken.
+            It's an implementClass of Authentication.
+
+        AuthenticationManager.authenticate(authentication): AuthenticationManager takes UsernamePasswordAuthenticationToken
+            and try to authenticate the corresponding user.
+            If this process succeeds, it returns an authentication instance
+            that contains all relevant information on the current user.
+            The JwtTokenProvider will take this information to generate a token
+         */
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         loginRequest.getUsername(),
@@ -58,6 +68,9 @@ public class UserController {
                 )
         );
 
+        /*
+        SecurityContextHolder.getContext().setAuthentication: it save the authentication information in the system
+         */
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = TOKEN_PREFIX + tokenProvider.generateToken(authentication);
 

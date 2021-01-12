@@ -15,7 +15,11 @@ import static io.alexspringboot.ppmtool.security.SecurityConstants.SECRET;
 @Component
 public class JwtTokenProvider {
 
-    // Generate the token
+    /**
+     * It takes a valid authentication and generate a token string
+     * @param authentication
+     * @return
+     */
     public String generateToken(Authentication authentication) {
         User user = (User) authentication.getPrincipal();
         String userId = Long.toString(user.getId());
@@ -37,7 +41,9 @@ public class JwtTokenProvider {
                 .compact();
     }
 
-    // Validate the token
+    /**
+     * Validate the token
+     */
     public boolean validateToken(String token) {
         try{
             Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token);
@@ -56,7 +62,9 @@ public class JwtTokenProvider {
         return false;
     }
 
-    // Get user id from the token
+    /**
+     * Get user id from the token
+     */
     public Long getUserIdFromJwt(String token) {
         Claims claims = Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token).getBody();
         String id = (String) claims.get("id");

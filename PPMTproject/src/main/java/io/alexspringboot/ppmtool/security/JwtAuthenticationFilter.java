@@ -27,6 +27,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
 
+    /**
+     * First, validate the token. If it passes, then do the filter.
+     */
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest,
                                     HttpServletResponse httpServletResponse,
@@ -52,6 +55,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     }
 
+    /**
+     * Extract the token without the bearer.
+     * Look at the headers in the postman.
+     * There's a header named "Authorization" having a value that is a token with a bearer
+     * @param httpServletRequest
+     * @return
+     */
     private String getJwtFromRequest(HttpServletRequest httpServletRequest) {
         String bearerToken = httpServletRequest.getHeader(HEADER_STRING);
         if (StringUtils.hasText(bearerToken) && bearerToken.startsWith(TOKEN_PREFIX)) {

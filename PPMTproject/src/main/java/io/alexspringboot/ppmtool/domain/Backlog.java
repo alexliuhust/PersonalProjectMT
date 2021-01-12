@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * Backlog is a bridge class for the one-to-many relationship between Project and ProjectTask
- * We do this to avoid redundant members within Project or ProjectTask caused by that direct relationship
+ * We do this to avoid redundant class members within Project or ProjectTask caused by that direct relationship
  */
 @Entity
 public class Backlog {
