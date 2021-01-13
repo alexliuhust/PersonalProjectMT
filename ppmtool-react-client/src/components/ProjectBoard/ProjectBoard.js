@@ -52,6 +52,12 @@ class ProjectBoard extends Component {
             {errors.projectNotFound}
           </h1>
         );
+      } else if (errors.projectIdentifier) {
+        return (
+          <h1 className="bg-danger text-light text-center">
+            {errors.projectIdentifier}
+          </h1>
+        );
       } else {
         if (projectTasks.length === 0) {
           return (
