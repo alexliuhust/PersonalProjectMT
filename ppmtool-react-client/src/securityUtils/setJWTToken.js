@@ -1,3 +1,6 @@
+/**
+ * Add the token to the header called "Authorization"
+ */
 import axios from "axios";
 
 const setJETToken = (token) => {

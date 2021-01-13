@@ -24,7 +24,7 @@ export const login = (LoginRequest) => async (dispatch) => {
     // post -> LoginRequest, the Java object contains username and password
     const res = await axios.post("/api/users/login", LoginRequest);
 
-    // extract token from res.data
+    // extract token from the server-end post, i.e. res.data
     const { token } = res.data;
 
     // store the token locally
