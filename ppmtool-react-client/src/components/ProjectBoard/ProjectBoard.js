@@ -46,16 +46,16 @@ class ProjectBoard extends Component {
     HeaderWithNoErrors = headerWithNoErrorsAlgorithm();
 
     const boardAlgorithm = (errors, projectTasks) => {
-      if (errors.projectNotFound) {
+      if (errors.businessNotFound) {
         return (
           <h1 className="bg-danger text-light text-center">
-            {errors.projectNotFound}
+            {errors.businessNotFound}
           </h1>
         );
-      } else if (errors.projectIdentifier) {
+      } else if (errors.identifier) {
         return (
           <h1 className="bg-danger text-light text-center">
-            {errors.projectIdentifier}
+            {errors.identifier}
           </h1>
         );
       } else {
