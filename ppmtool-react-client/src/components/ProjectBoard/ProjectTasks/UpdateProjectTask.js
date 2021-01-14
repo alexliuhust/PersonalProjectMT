@@ -100,9 +100,9 @@ class UpdateProjectTask extends Component {
                 to={`/projectBoard/${this.state.projectIdentifier}`}
                 className="btn btn-primary"
               >
-                Back to Project Board
+                Back to My Tasks
               </Link>
-              <h4 className="display-4 text-center">Update Project Task</h4>
+              <h4 className="display-4 text-center">Update Task</h4>
               <p className="lead text-center">
                 {this.state.projectIdentifier} + {this.state.projectSequence}
               </p>
@@ -114,7 +114,7 @@ class UpdateProjectTask extends Component {
                       "is-invalid": errors.summary,
                     })}
                     name="summary"
-                    placeholder="Project Task summary"
+                    placeholder="Task summary"
                     value={this.state.summary}
                     onChange={this.onChange}
                   />

@@ -26,13 +26,16 @@ class ProjectItem extends Component {
               <ul className="list-group">
                 <Link to={`projectBoard/${project.projectIdentifier}`}>
                   <li className="list-group-item board">
-                    <i className="fa fa-flag-checkered pr-1"> Project Board </i>
+                    <i className="fa fa-flag-checkered pr-1">
+                      {" "}
+                      My Business Board{" "}
+                    </i>
                   </li>
                 </Link>
 
                 <Link to={`updateProject/${project.projectIdentifier}`}>
                   <li className="list-group-item update">
-                    <i className="fa fa-edit pr-1"> Update Project Info</i>
+                    <i className="fa fa-edit pr-1"> Update Business Info</i>
                   </li>
                 </Link>
 
@@ -43,7 +46,7 @@ class ProjectItem extends Component {
                     project.projectIdentifier
                   )}
                 >
-                  <i className="fa fa-minus-circle pr-1"> Delete Project</i>
+                  <i className="fa fa-minus-circle pr-1"> Delete Business</i>
                 </li>
               </ul>
             </div>

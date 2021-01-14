@@ -35,7 +35,7 @@ class ProjectBoard extends Component {
       return (
         <div>
           <Link to={`/addProjectTask/${id}`} className="btn btn-primary mb-3">
-            <i className="fas fa-plus-circle"> Create Project Task</i>
+            <i className="fas fa-plus-circle"> Create Task</i>
           </Link>
           <br />
           <hr />
@@ -64,7 +64,7 @@ class ProjectBoard extends Component {
             <div>
               {HeaderWithNoErrors}
               <h1 className="bg-info text-light text-center">
-                No Project Tasks on this board
+                No Tasks on this board Yet
               </h1>
             </div>
           );

@@ -62,9 +62,9 @@ class AddProjectTask extends Component {
           <div className="row">
             <div className="col-md-8 m-auto">
               <Link to={`/projectBoard/${id}`} className="btn btn-primary">
-                Back to Project Board
+                Back to My Tasks
               </Link>
-              <h4 className="display-4 text-center">Add Project Task</h4>
+              <h4 className="display-4 text-center">Add Task</h4>
               <p className="lead text-center">Project Name + Project Code</p>
               <form onSubmit={this.onSubmit}>
                 <div className="form-group">
@@ -74,7 +74,7 @@ class AddProjectTask extends Component {
                       "is-invalid": errors.summary,
                     })}
                     name="summary"
-                    placeholder="Project Task summary"
+                    placeholder="Task summary"
                     value={this.state.summary}
                     onChange={this.onChange}
                   />

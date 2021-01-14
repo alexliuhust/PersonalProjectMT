@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import classnames from "classnames";
@@ -86,7 +87,17 @@ class Login extends Component {
                     <div className="invalid-feedback">{errors.password}</div>
                   )}
                 </div>
-                <input type="submit" className="btn btn-info btn-block mt-4" />
+                <input
+                  type="submit"
+                  className="btn btn-primary btn-block mt-4"
+                />
+
+                <hr />
+                <div className="form-group">
+                  <Link to="/register" className="btn btn-sm btn-info mr-2">
+                    Don't have an account yet? Sign Up!
+                  </Link>
+                </div>
               </form>
             </div>
           </div>
