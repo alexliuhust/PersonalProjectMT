@@ -70,14 +70,14 @@ public class ProjectTaskService {
         ProjectTask projectTask = projectTaskRepository.findByProjectSequence(pt_id.toUpperCase());
         if (projectTask == null) {
             throw new ProjectNotFound(
-                    "Project Task with ID '" + pt_id.toUpperCase() + "' NOT found");
+                    "Business Task with ID '" + pt_id.toUpperCase() + "' NOT found");
         }
 
         // Make sure the backlog, project, and projectTask match each other;
         if (!projectTask.getProjectIdentifier().equals(backlog_id.toUpperCase())) {
             throw new ProjectNotFound(
-                    "Project Task with ID '" + pt_id.toUpperCase() + "' " +
-                    "NOT exist in the project '" + backlog_id.toUpperCase() + "'. " +
+                    "Business Task with ID '" + pt_id.toUpperCase() + "' " +
+                    "NOT exist in the Business '" + backlog_id.toUpperCase() + "'. " +
                     "What are you playing at?");
         }
         // ========================== URL Validation Ends ==========================

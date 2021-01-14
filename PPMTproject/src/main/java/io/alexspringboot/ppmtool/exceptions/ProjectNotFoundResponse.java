@@ -5,22 +5,22 @@ package io.alexspringboot.ppmtool.exceptions;
  * It determines how the exception will look like as json format:
  * e.g.
  * {
- *     "ProjectNotFound": "Project with ID 'A0003' NOT found"
+ *     "BusinessNotFound": "Business with ID 'A0003' NOT found"
  * }
  */
 public class ProjectNotFoundResponse {
 
-    private String projectNotFound;
+    private String businessNotFound;
 
-    public ProjectNotFoundResponse(String projectNotFoundMessage) {
-        this.projectNotFound = projectNotFoundMessage;
+    public ProjectNotFoundResponse(String message) {
+        this.businessNotFound = message;
     }
 
-    public String getProjectNotFound() {
-        return projectNotFound;
+    public String getBusinessNotFound() {
+        return businessNotFound;
     }
 
-    public void setProjectNotFound(String projectNotFoundMessage) {
-        this.projectNotFound = projectNotFoundMessage;
+    public void setBusinessNotFound(String message) {
+        this.businessNotFound = message;
     }
 }

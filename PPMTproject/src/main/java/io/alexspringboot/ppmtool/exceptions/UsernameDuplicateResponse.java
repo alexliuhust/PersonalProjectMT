@@ -4,8 +4,8 @@ public class UsernameDuplicateResponse {
 
     private String username;
 
-    public UsernameDuplicateResponse(String usernameDuplicatedMessage) {
-        this.username = usernameDuplicatedMessage;
+    public UsernameDuplicateResponse(String message) {
+        this.username = message;
     }
 
     public String getUsername() {

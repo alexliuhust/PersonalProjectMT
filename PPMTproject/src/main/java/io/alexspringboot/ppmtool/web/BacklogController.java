@@ -70,7 +70,7 @@ public class BacklogController {
                                                Principal principal) {
         projectTaskService.deleteByProjectSequence(backlog_id, pt_id, principal.getName());
         return new ResponseEntity<String>(
-                "Successfully Deleted A ProjectTask With ID: '" + pt_id.toUpperCase() + "'.", HttpStatus.OK);
+                "Successfully Deleted A Task With ID: '" + pt_id.toUpperCase() + "'.", HttpStatus.OK);
     }
 
 }

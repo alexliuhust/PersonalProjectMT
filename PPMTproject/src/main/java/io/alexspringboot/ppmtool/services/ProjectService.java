@@ -32,12 +32,12 @@ public class ProjectService {
 
             if (existingProject == null) {
                 throw new ProjectIdException(
-                  "Project ID '" + project.getProjectIdentifier().toUpperCase() + "' does NOT exist");
+                  "Business ID '" + project.getProjectIdentifier().toUpperCase() + "' does NOT exist");
             }
             // If it tries to update other one's project
             else if (!existingProject.getProjectLeader().equals(username)) {
                 throw new ProjectNotFound(
-                   "Your project with ID '" + project.getProjectIdentifier().toUpperCase() + "' does NOT exist");
+                   "Your Business with ID '" + project.getProjectIdentifier().toUpperCase() + "' does NOT exist");
             }
         }
 
@@ -67,7 +67,7 @@ public class ProjectService {
 
         } catch (Exception e) {
             throw new ProjectIdException(
-                    "Project ID '" + project.getProjectIdentifier().toUpperCase() + "' already exists");
+                    "Business ID '" + project.getProjectIdentifier().toUpperCase() + "' already exists");
         }
     }
 
@@ -75,13 +75,13 @@ public class ProjectService {
         Project project = projectRepository.findProjectByProjectIdentifier(projectId.toUpperCase());
         if (project == null) {
             throw new ProjectIdException(
-                    "Project ID '" + projectId.toUpperCase() + "' does NOT exist");
+                    "Business ID '" + projectId.toUpperCase() + "' does NOT exist");
         }
 
         // Only the project owner can access this project
         if (!project.getProjectLeader().equals(username)) {
             throw new ProjectNotFound(
-                    "Your project with ID '" + projectId.toUpperCase() + "' does NOT exist");
+                    "Your Business with ID '" + projectId.toUpperCase() + "' does NOT exist");
         }
 
         return project;

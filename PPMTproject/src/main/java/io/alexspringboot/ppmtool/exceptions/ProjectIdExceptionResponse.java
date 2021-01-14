@@ -5,22 +5,22 @@ package io.alexspringboot.ppmtool.exceptions;
  * It determines how the exception will look like as json format:
  * e.g.
  * {
- *     "projectIdentifier": "Project ID 'A0003' does NOT exist"
+ *     "Identifier": "Business ID 'A0003' does NOT exist"
  * }
  */
 public class ProjectIdExceptionResponse {
 
-    private String projectIdentifier;
+    private String businessIdentifier;
 
-    public ProjectIdExceptionResponse(String projectIdExceptionMassage) {
-        this.projectIdentifier = projectIdExceptionMassage;
+    public ProjectIdExceptionResponse(String exceptionMassage) {
+        this.businessIdentifier = exceptionMassage;
     }
 
-    public String getProjectIdentifier() {
-        return projectIdentifier;
+    public String getIdentifier() {
+        return businessIdentifier;
     }
 
-    public void setProjectIdentifier(String projectIdExceptionMassage) {
-        this.projectIdentifier = projectIdExceptionMassage;
+    public void setIdentifier(String exceptionMassage) {
+        this.businessIdentifier = exceptionMassage;
     }
 }

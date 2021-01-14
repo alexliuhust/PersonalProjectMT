@@ -15,7 +15,7 @@ public class ProjectTask {
     private Long id;
     @Column(updatable = false, unique = true)
     private String projectSequence;
-    @NotBlank(message = "Please include a project summary")
+    @NotBlank(message = "Please include a task summary")
     private String summary;
     private String acceptanceCriteria;
     private String status;
@@ -139,15 +139,15 @@ public class ProjectTask {
 
     @Override
     public String toString() {
-        return "ProjectTask{" +
+        return "Task{" +
                 "id=" + id +
-                ", projectSequence='" + projectSequence + '\'' +
+                ", sequence='" + projectSequence + '\'' +
                 ", summary='" + summary + '\'' +
                 ", acceptanceCriteria='" + acceptanceCriteria + '\'' +
                 ", status='" + status + '\'' +
                 ", priority=" + priority +
                 ", dueDate=" + dueDate +
-                ", projectIdentifier='" + projectIdentifier + '\'' +
+                ", identifier='" + projectIdentifier + '\'' +
                 ", create_At=" + create_At +
                 ", update_At=" + update_At +
                 '}';
