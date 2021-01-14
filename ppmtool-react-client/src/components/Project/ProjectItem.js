@@ -31,6 +31,7 @@ class ProjectItem extends Component {
                 {project.start_date} ~ {project.end_date}
               </p>
             </div>
+
             <div className="col-md-4 d-none d-lg-block">
               <ul className="list-group">
                 <Link to={`myTasks/${project.projectIdentifier}`}>

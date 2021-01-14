@@ -35,8 +35,11 @@ class ProjectBoard extends Component {
       return (
         <div>
           <Link to={`/addTask/${id}`} className="btn btn-primary mb-3">
-            <i className="fas fa-plus-circle"> Create Task</i>
+            <i className="fas fa-plus-circle"> Create Task for {id}</i>
           </Link>
+
+          <h1 className="text-center">Business {id}</h1>
+
           <br />
           <hr />
         </div>
