@@ -1,3 +1,17 @@
+#todocardheader {
+  background-color: #f4f5bd;
+}
+
+#inprogresscardheader {
+  background-color: #bce0f5;
+}
+
+#donecardheader {
+  background-color: #cff8bc;
+}
+
+/* ---------------------------------------------------------- */
+
 img {
   width: 100%;
 }
