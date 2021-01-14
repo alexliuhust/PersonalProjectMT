@@ -15,21 +15,27 @@ class ProjectItem extends Component {
       <div className="container">
         <div className="card card-body bg-light mb-3">
           <div className="row">
-            <div className="col-2">
+            <div className="col-1">
               <span className="mx-auto">{project.projectIdentifier}</span>
             </div>
-            <div className="col-lg-6 col-md-4 col-8">
-              <h3>{project.projectName}</h3>
+            <div className="col-lg-7 col-md-5 col-9">
+              <div className="text-center">
+                <h3>{project.projectName}</h3>
+              </div>
+              <hr />
+              <h5>Description: </h5>
               <p>{project.description}</p>
+              <hr />
+              <h5>Period: </h5>
+              <p>
+                {project.start_date} ~ {project.end_date}
+              </p>
             </div>
             <div className="col-md-4 d-none d-lg-block">
               <ul className="list-group">
                 <Link to={`myTasks/${project.projectIdentifier}`}>
                   <li className="list-group-item board">
-                    <i className="fa fa-flag-checkered pr-1">
-                      {" "}
-                      My Business Board{" "}
-                    </i>
+                    <i className="fa fa-flag-checkered pr-1"> My Tasks </i>
                   </li>
                 </Link>
 
