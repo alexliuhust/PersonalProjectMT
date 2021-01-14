@@ -32,6 +32,11 @@
   margin-bottom: 30px;
 }
 
+.CreateButton {
+  text-align: center;
+  margin-top: 20px;
+}
+
 /* ---------------------------------------------------------- */
 
 img {
