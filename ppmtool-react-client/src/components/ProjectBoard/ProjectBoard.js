@@ -38,7 +38,7 @@ class ProjectBoard extends Component {
             <i className="fas fa-plus-circle"> Create Task for {id}</i>
           </Link>
 
-          <h1 className="text-center">Business {id}</h1>
+          <h1 className="text-center">My Tasks of Business {id}</h1>
 
           <br />
           <hr />

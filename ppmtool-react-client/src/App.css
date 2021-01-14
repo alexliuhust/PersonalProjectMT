@@ -10,6 +10,28 @@
   background-color: #cff8bc;
 }
 
+#HIGHpriority {
+  background-color: #ff0000;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+#MEDIUMpriority {
+  background-color: #ff00009d;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+#LOWpriority {
+  background-color: #ff000046;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.DueDate {
+  margin-bottom: 30px;
+}
+
 /* ---------------------------------------------------------- */
 
 img {

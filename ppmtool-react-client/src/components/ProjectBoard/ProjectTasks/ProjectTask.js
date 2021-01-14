@@ -13,28 +13,35 @@ class ProjectTask extends Component {
     const { projectTask } = this.props;
 
     // Colorize the priority
-    let priorityString, priorityClass;
+    let priorityString, priorityID;
     if (projectTask.priority === 1) {
       priorityString = "HIGH";
-      priorityClass = "bg-danger text-light";
+      priorityID = "HIGHpriority";
     } else if (projectTask.priority === 2) {
       priorityString = "MEDIUM";
-      priorityClass = "bg-warning text-light";
+      priorityID = "MEDIUMpriority";
     } else {
       priorityString = "LOW";
-      priorityClass = "bg-info text-light";
+      priorityID = "LOWpriority";
     }
 
     return (
       <div className="card mb-1 bg-light">
-        <div className={`card-header text-primary ${priorityClass}`}>
-          ID: {projectTask.projectSequence} -- Priority: {priorityString}
+        <div
+          className="card-header text-primary text-light"
+          id={`${priorityID}`}
+        >
+          {priorityString} Priority
         </div>
         <div className="card-body bg-light">
-          <h5 className="card-title">{projectTask.summary}</h5>
-          <p className="card-text text-truncate ">
-            {projectTask.acceptanceCriteria}
-          </p>
+          <h5 className="card-title">
+            Summary of {projectTask.projectSequence}
+          </h5>
+          <p className="card-text text-truncate ">{projectTask.summary}</p>
+          <hr></hr>
+          <h6 className="text-right DueDate">
+            Due Date: {projectTask.dueDate}
+          </h6>
           <Link
             to={`/updateTask/${projectTask.projectIdentifier}/${projectTask.projectSequence}`}
             className="btn btn-primary"
