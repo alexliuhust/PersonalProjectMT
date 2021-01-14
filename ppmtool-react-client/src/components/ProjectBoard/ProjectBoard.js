@@ -34,7 +34,7 @@ class ProjectBoard extends Component {
     const headerWithNoErrorsAlgorithm = () => {
       return (
         <div>
-          <Link to={`/addProjectTask/${id}`} className="btn btn-primary mb-3">
+          <Link to={`/addTask/${id}`} className="btn btn-primary mb-3">
             <i className="fas fa-plus-circle"> Create Task</i>
           </Link>
           <br />

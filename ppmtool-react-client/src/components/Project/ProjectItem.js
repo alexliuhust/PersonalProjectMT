@@ -24,7 +24,7 @@ class ProjectItem extends Component {
             </div>
             <div className="col-md-4 d-none d-lg-block">
               <ul className="list-group">
-                <Link to={`projectBoard/${project.projectIdentifier}`}>
+                <Link to={`myTasks/${project.projectIdentifier}`}>
                   <li className="list-group-item board">
                     <i className="fa fa-flag-checkered pr-1">
                       {" "}
@@ -33,7 +33,7 @@ class ProjectItem extends Component {
                   </li>
                 </Link>
 
-                <Link to={`updateProject/${project.projectIdentifier}`}>
+                <Link to={`updateBusiness/${project.projectIdentifier}`}>
                   <li className="list-group-item update">
                     <i className="fa fa-edit pr-1"> Update Business Info</i>
                   </li>
