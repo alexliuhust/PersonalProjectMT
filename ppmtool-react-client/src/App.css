@@ -1,3 +1,21 @@
+.BigHead1 {
+  font-size: 130px;
+}
+.BigHead2 {
+  font-size: 82px;
+}
+.BigHead3 {
+  font-size: 155px;
+}
+
+.LoginButton {
+  margin-top: 120px;
+}
+.SigninButton {
+  margin-top: 150px;
+  margin-bottom: 100px;
+}
+
 #todocardheader {
   background-color: #fc8c8c7e;
 }

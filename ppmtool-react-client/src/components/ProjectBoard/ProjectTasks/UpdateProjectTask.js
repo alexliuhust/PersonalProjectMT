@@ -103,9 +103,7 @@ class UpdateProjectTask extends Component {
                 Back to My Tasks
               </Link>
               <h4 className="display-4 text-center">Update Task</h4>
-              <p className="lead text-center">
-                {this.state.projectIdentifier} + {this.state.projectSequence}
-              </p>
+              <p className="lead text-center">{this.state.projectSequence}</p>
               <form onSubmit={this.onSubmit}>
                 <div className="form-group">
                   <input
