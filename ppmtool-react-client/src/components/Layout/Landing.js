@@ -24,17 +24,14 @@ class Landing extends Component {
 
               <div className="col-4 text-center">
                 <div className="LoginButton">
-                  <Link
-                    to="/login"
-                    className="btn btn-outline-dark btn-lg btn-block"
-                  >
+                  <Link to="/login" className="btn btn-dark btn-lg btn-block">
                     Log in
                   </Link>
                 </div>
                 <div className="SigninButton">
                   <Link
                     to="/register"
-                    className="btn btn-outline-dark btn-lg btn-block"
+                    className="btn btn-dark btn-lg btn-block"
                   >
                     Sign Up
                   </Link>

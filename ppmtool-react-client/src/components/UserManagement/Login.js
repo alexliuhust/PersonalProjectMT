@@ -89,12 +89,15 @@ class Login extends Component {
                 </div>
                 <input
                   type="submit"
-                  className="btn btn-primary btn-block mt-4"
+                  className="btn btn-outline-dark btn-block mt-4"
                 />
 
                 <hr />
                 <div className="form-group">
-                  <Link to="/register" className="btn btn-sm btn-info mr-2">
+                  <Link
+                    to="/register"
+                    className="btn btn-outline-dark btn-block mt-4"
+                  >
                     Don't have an account yet? Sign Up!
                   </Link>
                 </div>

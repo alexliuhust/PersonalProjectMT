@@ -5,7 +5,7 @@ const CreateProjectButton = () => {
   return (
     <React.Fragment>
       <div className="CreateButton">
-        <Link to="/addBusiness" className="btn btn-lg btn-primary">
+        <Link to="/addBusiness" className="btn btn-lg btn-dark">
           <i className="fas fa-plus-circle"> Create a Business</i>
         </Link>
       </div>
