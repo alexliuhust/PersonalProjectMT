@@ -70,6 +70,14 @@
   margin-top: 20px;
 }
 
+.Description {
+  font-weight: 700;
+}
+
+.Period {
+  font-weight: 600;
+}
+
 /* ---------------------------------------------------------- */
 
 img {

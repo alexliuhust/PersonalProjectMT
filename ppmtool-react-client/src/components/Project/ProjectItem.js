@@ -19,17 +19,21 @@ class ProjectItem extends Component {
               <span className="mx-auto">{project.projectIdentifier}</span>
             </div>
             <div className="col-lg-7 col-md-5 col-9">
-              <div className="text-center">
+              <div className="text-center text-black">
                 <h3>{project.projectName}</h3>
               </div>
+
               <hr />
-              <h5>Description: </h5>
-              <p>{project.description}</p>
-              <hr />
-              <h5>Period: </h5>
+
               <p>
-                {project.start_date} ~ {project.end_date}
+                <span className="Description">Description: </span>{" "}
+                {project.description}
               </p>
+              <hr />
+
+              <div className="Period">
+                {project.start_date} ~ {project.end_date}
+              </div>
             </div>
 
             <div className="col-md-4 d-none d-lg-block">
