@@ -16,13 +16,31 @@ class ProjectTask extends Component {
     let priorityString, priorityID;
     if (projectTask.priority === 1) {
       priorityString = "HIGH";
-      priorityID = "HIGHpriority";
+      if (projectTask.status === "TO_DO") {
+        priorityID = "HIGHpriority1";
+      } else if (projectTask.status === "IN_PROGRESS") {
+        priorityID = "HIGHpriority2";
+      } else {
+        priorityID = "HIGHpriority3";
+      }
     } else if (projectTask.priority === 2) {
       priorityString = "MEDIUM";
-      priorityID = "MEDIUMpriority";
+      if (projectTask.status === "TO_DO") {
+        priorityID = "MEDIUMpriority1";
+      } else if (projectTask.status === "IN_PROGRESS") {
+        priorityID = "MEDIUMpriority2";
+      } else {
+        priorityID = "MEDIUMpriority3";
+      }
     } else {
       priorityString = "LOW";
-      priorityID = "LOWpriority";
+      if (projectTask.status === "TO_DO") {
+        priorityID = "LOWpriority1";
+      } else if (projectTask.status === "IN_PROGRESS") {
+        priorityID = "LOWpriority2";
+      } else {
+        priorityID = "LOWpriority3";
+      }
     }
 
     return (

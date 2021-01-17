@@ -1,5 +1,5 @@
 #todocardheader {
-  background-color: #f4f5bd;
+  background-color: #fc8c8c7e;
 }
 
 #inprogresscardheader {
@@ -10,20 +10,53 @@
   background-color: #cff8bc;
 }
 
-#HIGHpriority {
+#HIGHpriority1 {
   background-color: #ff0000;
   font-size: 25px;
   font-weight: 700;
 }
 
-#MEDIUMpriority {
-  background-color: #ff00009d;
+#HIGHpriority2 {
+  background-color: #007add;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+#HIGHpriority3 {
+  background-color: #04c21e;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+#MEDIUMpriority1 {
+  background-color: #ff00009f;
   font-size: 18px;
   font-weight: 700;
 }
 
-#LOWpriority {
-  background-color: #ff000046;
+#MEDIUMpriority2 {
+  background-color: #0ca2f8af;
+  font-size: 18px;
+  font-weight: 700;
+}
+#MEDIUMpriority3 {
+  background-color: #04c21d91;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+#LOWpriority1 {
+  background-color: #ff00003f;
+  font-size: 15px;
+  font-weight: 700;
+}
+#LOWpriority2 {
+  background-color: #bce0f5;
+  font-size: 15px;
+  font-weight: 700;
+}
+#LOWpriority3 {
+  background-color: #04c21d36;
   font-size: 15px;
   font-weight: 700;
 }
