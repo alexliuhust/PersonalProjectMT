@@ -22,7 +22,10 @@ export const createNewUser = (newUser, history) => async (dispatch) => {
 export const login = (LoginRequest) => async (dispatch) => {
   try {
     // post -> LoginRequest, the Java object contains username and password
+    // Errors might appear right at this step
     const res = await axios.post("/api/users/login", LoginRequest);
+
+    // ------ When the User successfully logged in, do the rest of the steps below ------------
 
     // extract token from the server-end post, i.e. res.data
     const { token } = res.data;
