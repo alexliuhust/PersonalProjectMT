@@ -61,7 +61,7 @@ class AddProjectTask extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <Link to={`/projectBoard/${id}`} className="btn btn-primary">
+              <Link to={`/myTasks/${id}`} className="btn btn-primary">
                 Back to My Tasks
               </Link>
               <h4 className="display-4 text-center">Add Task</h4>
