@@ -12,4 +12,6 @@
 ## Spring Security + JWT — Log In
 ![Alt text](/images/Authentication.png?raw=true "Spring Security + JWT — Log In")
 
+## Authorization — Update a business
+![Alt text](/images/Autorization.png?raw=true "Authorization — Update a business")
 
