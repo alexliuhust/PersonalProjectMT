@@ -16,9 +16,7 @@
 ![Alt text](/images/Authentication.png?raw=true "Spring Security + JWT — Log In")
 
 #### Back end
-When a user is trying to log in, the input username and password are encapsulated into an implementing class of Authentication, called UsernamePasswordAuthenticationToken.
-
-AuthenticationManager takes UsernamePasswordAuthenticationToken and tries to authenticate the corresponding user.
+When a user is trying to log in, the input username and password are encapsulated into an implementing class of Authentication, called UsernamePasswordAuthenticationToken. AuthenticationManager takes UsernamePasswordAuthenticationToken and tries to authenticate the corresponding user.
 
 If this process fails, the AuthenticationEntryPoint will handle this and post the InvalidLoginResponse back to the front end.
 
