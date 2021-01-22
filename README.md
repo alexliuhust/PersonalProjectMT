@@ -8,18 +8,18 @@
 ![Alt text](/images/OverallArchitecture.png?raw=true "Overall Architecture")
 
 #### Front end
-The front end contains the web pages, where users directly operate. React components communicate with the back end through the actions. They send HTTP requests to the back end and receive the responses and use those responses to update the Redux store, which manages all the states, or to say, the global information that every component authorized will be able to access. 
+The front end contains the web pages, where users directly operate. React components communicate with the back end through the ```actions```. They send HTTP requests to the back end and receive the responses and use those responses to update the ```Redux store```, which manages all the ```states```, or to say, the global information that every component authorized will be able to access. 
 
 #### Back end
-The back end contains entities, controllers, services, and repositories. 
+The back end contains **entities**, **controllers**, **services**, and **repositorie**. 
 
-The controllers directly handle the requests from the web. They analyze the request type and give the corresponding response, intercept the input errors, or post back the prompts. They cannot do the data manipulation directly, but have to through the services. 
+The **controllers** directly handle the requests from the web. They analyze the request type and give the corresponding response, intercept the input errors, or post back the prompts. They cannot do the data manipulation directly, but have to through the *services*. 
 
-The services handle the details of the business logic, calling the methods from the repository interfaces to do the CRUD operations, or coping with the errors from the server end or database.
+The **services** handle the details of the business logic, calling the methods from the *repository* interfaces to do the CRUD operations, or coping with the errors from the server end or database.
 
-The repositories directly get along with the database. They have a one-to-one correspondence with entities and have various operation methods for the entities together with their attributes, like find a business by a given identification, update a task by a given sequence, etc. 
+The **repositories** directly get along with the database. They have a one-to-one correspondence with *entities* and have various operation methods for the entities together with their attributes, like find a business by a given identification, update a task by a given sequence, etc. 
 
-The Hibernate framework will automatically map those entity objects to the tables of the relational database, the object's class name as the relation's name, the object's member variables as the table's attributes. 
+The **Hibernate** framework will automatically map those entity objects to the tables of the relational database, the object's class name as the relation's name, the object's member variables as the table's attributes. 
 
 
 ## React + Redux Architecture — Create a business
