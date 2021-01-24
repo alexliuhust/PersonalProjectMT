@@ -11,11 +11,11 @@
 The front end contains the web pages, where users directly operate. React components communicate with the back end through the ```actions```. They send HTTP requests to the back end and receive the responses and use those responses to update the ```Redux store```, which manages all the ```states```, or to say, the global information that every component authorized will be able to access. 
 
 #### Back end
-The back end contains **entities**, **controllers**, **services**, and **repositorie**. 
+The back end mainly contains **entities**, **controllers**, **services**, and **repositorie**. 
 
 The **controllers** directly handle the requests from the web. They analyze the request type and give the corresponding response, intercept the input errors, or post back the prompts. They cannot do the data manipulation directly, but have to through the *services*. 
 
-The **services** handle the details of the business logic, calling the methods from the *repository* interfaces to do the CRUD operations, or coping with the errors from the server end or database.
+The **services** handle the details of the business logic, calling the methods from the *repository* interfaces to do the CRUD operations, or coping with the errors from the server end or database. The *exceptions* package is who actually deal with the server-end/database exceptions, and  ```CustomResponseEntityExceptionHandler```, annotated with ```@ControllerAdvice``` and ```@RestController```, who communicates directly with the front end, supporting other exception handling service.
 
 The **repositories** directly get along with the database. They have a one-to-one correspondence with *entities* and have various operation methods for the entities together with their attributes, like find a business by a given identification, update a task by a given sequence, etc. 
 
