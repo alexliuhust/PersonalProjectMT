@@ -2,7 +2,7 @@
 
 ## Project URL
     https://personalbusiness.herokuapp.com
-
+![Alt text](/images/Landing.png?raw=true "Landing Page")
 
 ## Overall Architecture
 ![Alt text](/images/OverallArchitecture.png?raw=true "Overall Architecture")
