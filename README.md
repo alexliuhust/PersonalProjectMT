@@ -12,6 +12,7 @@ The front end contains the web pages, where users directly operate. React compon
 
 #### Back end
 The back end mainly contains **entities**, **controllers**, **services**, and **repositorie**. 
+![Alt text](/images/Serverend.png?raw=true "Server End Architecture")
 
 The **controllers** directly handle the requests from the web. They analyze the request type and give the corresponding response, intercept the input errors, or post back the prompts. They cannot do the data manipulation directly, but have to through the *services*. 
 
