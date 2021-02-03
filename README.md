@@ -38,7 +38,7 @@ When the store receives the dispatched object, it cannot directly cope with it, 
 
 ### Life Cycle
 At the time the React component `CreateForm` called the action `createBusiness`, this component has already connected to the **Redux Store**. As soon as the states in the store get updated, the component will pick up the states it needs from those updated states, then use `mapStateToProps` to map the received states into its own `props`. After that, the method `componentWillReceiveProps` will be called to recognize whether the new props —— `nextprops` contains the errors. If it is, the method will instantly update the state of the component —— i.e. assign the received errors into the member variable `errors` —— and trigger the re-render. At last, the `CreateForm` will show the user-friendly input-error prompts. 
-![Alt text](/images/CreateBusinessErrors.png =100x "Create Business Errors")
+![Alt text](/images/CreateBusinessErrors.png "Create Business Errors"){ width=50% }
 
 
 ## Spring Security + JWT — Log In
