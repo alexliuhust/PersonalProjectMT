@@ -26,8 +26,15 @@ The **Hibernate** framework will automatically map those entity objects to the t
 ## React + Redux Architecture — Create a business
 ![Alt text](/images/React+ReduxCreatebusiness.png?raw=true "React + Redux - Create business")
 
+### Action
+When the **submit** button clicked, the React component ```CreateForm``` calls the corresponding action —— ```createBusiness```. The action then will send an HTTP Requst to the back end, or to say, call the RESTful API, and  hopely will get an OK-Reponse. 
 
+If everything goes well, the action will take users back to the ```Dashboard``` page according to the ```history``` passed into the action. 
 
+If there are some errors, the action will catch those errors and prepare to dispatch the information to the **Redux Store**. The to-be-dispatched object usually contains two members: the `type`, and the `payload`. The type is a signal or a identifier, whose function will be talked later. The payload is the actual content that the action wants to dispatch to the Store. 
+
+### React + Redux
+When the store receives the dispatched object, it cannot directly cope with it, because what stored inside the Redux Store is **states**. That means it needs an translator to turn the **object** into **states**. Here comes the **Reducer**. It will identify the `type` of a dispatched object and take the corresponding steps to translate the object into the states and finally the states inside the store can be updated. 
 
 
 
@@ -53,6 +60,10 @@ Then, it will set the JWT into the headers, i.e. assign the "Authorization" with
 After that, the action will decode the JWT back to user information —— like user id, username, password, expiration date, etc —— and update Redux store by it. At last, the page will be re-directed to the ```dashboard```.
 
 If the action receives ```InvalidLoginResponse```, it will update the errors in the Redux store and render them back to the Login Page.
+
+
+
+
 
 
 ## Authorization — Update a business
