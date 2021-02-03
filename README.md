@@ -37,8 +37,8 @@ If there are some errors, the action will catch those errors and prepare to disp
 When the store receives the dispatched object, it cannot directly cope with it, because what stored inside the Redux Store is **states**. That means it needs a translator to turn the **object** into **states**. Here comes the **Reducer**. It will recognize the `type` of a dispatched object and take the corresponding steps to translate the object into the states and finally the states inside the store can be updated. 
 
 ### Life Cycle
-Since the React component `CreateForm` called the action `createBusiness`, this component has already connected to the **Redux Store**. As soon as the states in the store get updated, the component will pick up the states it needs from those updated states, then use `mapStateToProps` to map the received states into its own `props`. After that, the method `componentWillReceiveProps` will be called to recognize whether the new props —— `nextprops` contains the errors. If it is, the method will instantly update the state of the component —— i.e. assign the received errors into the member variable `errors` —— and trigger the re-render. At last, the `CreateForm` will show the user friendly input-error prompts. 
-
+At the time the React component `CreateForm` called the action `createBusiness`, this component has already connected to the **Redux Store**. As soon as the states in the store get updated, the component will pick up the states it needs from those updated states, then use `mapStateToProps` to map the received states into its own `props`. After that, the method `componentWillReceiveProps` will be called to recognize whether the new props —— `nextprops` contains the errors. If it is, the method will instantly update the state of the component —— i.e. assign the received errors into the member variable `errors` —— and trigger the re-render. At last, the `CreateForm` will show the user-friendly input-error prompts. 
+![Alt text](/images/CreateBusinessErrors.png?raw=true "Create Business Errors")
 
 
 ## Spring Security + JWT — Log In
