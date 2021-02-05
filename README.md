@@ -65,10 +65,12 @@ After that, the action will decode the JWT back to user information —— like 
 If the action receives `InvalidLoginResponse`, it will update the errors in the Redux store and render them back to the Login Page.
 
 
-
-
-
-
 ## Authorization — Update a business
 ![Alt text](/images/Autorization.png?raw=true "Authorization — Update a business")
+When the `updateBusiness` action sends the request to the back-end, the JWT will be brought with the request (in the request headers). After that, in the back-end, the `OncePerRequestFilter` will first extract the JWT and try to validate it by calling the method `validateToken(jwt)` from the `tokenProvider`. 
 
+If the extraction or the validation fails, the filter will intercept this request and redirect to the login page. Some of the typical reasons for this scenario could be that the JWT expired, or that someone tries to send this request using other tools like Postman without logging in. 
+
+If the above operation succeeds and the filters following that also succeed, the *Controller* will extract the username from the `principal` and pass the to-be-updated business object together with that username to the *Service*. 
+
+Now, it's time for the identity comparison. The *Service* will find the target business according to the business identifier provided by the request body. Every business object has a leader, which represents the username of the owner. Then, the `Service` will compare the leader's name and the username the *Controller* just passed in. If the two names match, i.e. the current user is the owner of the target business, the rest of the normal work (data manipulation) follows that. If they don't match, i.e. someone tries to access another one's data, then the `Service` will refuse that request and post the exceptions/prompts to the front-end.
