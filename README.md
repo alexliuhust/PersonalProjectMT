@@ -55,10 +55,10 @@ The `JwtTokenProvider` then takes this information to generate a token. It will 
 
 #### Front end
 When the action receives JWT, it will first store it in the `localStorage`. 
-![Alt text](/images/Headers.png?raw=true "Headers")
+![Alt text](/images/localStorage.png?raw=true "Local Storage")
 
 Then, it will set the JWT into the headers, i.e. assign the "Authorization" with this JWT.
-![Alt text](/images/localStorage.png?raw=true "Local Storage")
+![Alt text](/images/Headers.png?raw=true "Headers")
 
 After that, the action will decode the JWT back to user information —— like user id, username, password, expiration date, etc —— and update Redux store by it. At last, the page will be re-directed to the `dashboard`.
 
